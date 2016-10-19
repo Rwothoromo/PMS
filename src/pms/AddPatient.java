@@ -277,8 +277,8 @@ public class AddPatient extends javax.swing.JFrame {
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         dispose();
-        //Admin A = new Admin();
-        //A.setVisible(true);
+        Login L = new Login();
+        L.setVisible(true);
     }//GEN-LAST:event_btnBackActionPerformed
 
     public void setAdate(String x){

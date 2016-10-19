@@ -128,21 +128,14 @@ public class DeletePatient extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        String IDNO = txtIDNO.getText().toUpperCase();
-        String sqlQuery = "delete * from pms_store_1 where IDNO=?";
+        String IDNO = txtIDNO.getText();
+        String sqlQuery = "delete from pms_store_1 where IDNO='" + IDNO + "'";
         
         try {         
             PreparedStatement ps = x.prepareStatement(sqlQuery);
-            ps.setString(1, IDNO);
-            ResultSet rs = ps.executeQuery();
-            
-            if(rs.next()){
-                JOptionPane.showMessageDialog(null, "Patient " + IDNO + " deleted!");
+            ps.execute(sqlQuery);
+            JOptionPane.showMessageDialog(null, "Patient " + IDNO + " deleted!");
             }
-            else{
-                JOptionPane.showMessageDialog(null, "Missing record!");
-            }
-        }
         catch (Exception e){
             JOptionPane.showMessageDialog(null, e);
         }

@@ -170,9 +170,9 @@ public class ChangePassword extends javax.swing.JFrame {
         String OldPassword = txtOldPassword.getText();
         String NewPassword = txtNewPassword.getText();
         String ConfirmPassword = txtConfirmPassword.getText();
-        String sqlQueryPwd = "select Password from pms_user where IDNO=? and Password=?";
-        String sqlQueryP = "update super_user set Password='"
-                + ConfirmPassword + "' where IDNO='" + ID + "'";
+        String sqlQueryPwd = "select Password from admin where ID=? and Password=?";
+        String sqlQueryP = "update admin set Password='"
+                + ConfirmPassword + "' where ID='" + ID + "'";
         try {
             PreparedStatement ps = x.prepareStatement(sqlQueryPwd);
             PreparedStatement ps1 = x.prepareStatement(sqlQueryP);

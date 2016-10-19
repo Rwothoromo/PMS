@@ -115,8 +115,8 @@ public class DeleteUser extends javax.swing.JFrame {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         String IDNO = txtIDNO.getText();
-        String sqlDeleteUser = "Delete from pms_user where IDNO='" + IDNO + "'";
-        String sqlCheck = "Select * from user_table" + " where IDNO=?";
+        String sqlDeleteUser = "Delete from pms_user where ID='" + IDNO + "'";
+        String sqlCheck = "Select * from pms_user where ID=?";
         try {
             PreparedStatement ps = x.prepareStatement(sqlCheck);
             PreparedStatement ps1 = x.prepareStatement(sqlDeleteUser);

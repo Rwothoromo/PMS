@@ -8,10 +8,10 @@ import javax.swing.JOptionPane;
 
 public class ChangeUserPassword extends javax.swing.JFrame {
 
-    Connection x = null;
+    Connection a = null;
     public ChangeUserPassword() {
         initComponents();
-        x = PMSdbConnect.dbConnector();
+        a = PMSdbConnect.dbConnector();
     }
 
     /**
@@ -170,12 +170,12 @@ public class ChangeUserPassword extends javax.swing.JFrame {
         String OldPassword = txtOldPassword.getText();
         String NewPassword = txtNewPassword.getText();
         String ConfirmPassword = txtConfirmPassword.getText();
-        String sqlQueryPwd = "select Password from Admin where IDNO=? and Password=?";
-        String sqlQueryP = "update super_user set Password='"
-                + ConfirmPassword + "' where IDNO='" + ID + "'";
+        String sqlQueryPwd = "select Password from pms_user where ID=? and Password=?";
+        String sqlQueryP = "update pms_user set Password='"
+                + ConfirmPassword + "' where ID='" + ID + "'";
         try {
-            PreparedStatement ps = x.prepareStatement(sqlQueryPwd);
-            PreparedStatement ps1 = x.prepareStatement(sqlQueryP);
+            PreparedStatement ps = a.prepareStatement(sqlQueryPwd);
+            PreparedStatement ps1 = a.prepareStatement(sqlQueryP);
             ps.setString(1, ID);
             ps.setString(2, OldPassword);
             ResultSet rs = ps.executeQuery();
@@ -190,7 +190,6 @@ public class ChangeUserPassword extends javax.swing.JFrame {
             else {
                 JOptionPane.showMessageDialog(null, "Invalid! Cross check!");
             }
-            rs.close();
         }
         catch (Exception e){
             JOptionPane.showMessageDialog(null, e);
